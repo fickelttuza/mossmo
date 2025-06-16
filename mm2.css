@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost VB Polish - Premium E-papierosy i Liquidy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #222;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #0066cc;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0055aa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Video banner styling */
+        .video-banner {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .video-banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Sticky header styling */
+        .main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0066cc;
+        }
+
+        .logo span {
+            color: #222;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0066cc;
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #0066cc;
+        }
+
+        .main-nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            padding: 10px;
+            font-size: 1.8rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle .menu-icon,
+        .mobile-menu-toggle .close-icon {
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-toggle .close-icon {
+            display: none;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            min-height: 500px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-carousel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .hero-carousel-bg .carousel-video,
+        .hero-carousel-bg video.carousel-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 500px;
+            max-height: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Products section */
+        .products {
+            background-color: #fff;
+            padding: 100px 0;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            width: 100%;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .gallery-nav button {
+            padding: 12px 24px;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            min-width: 140px;
+            flex-shrink: 0;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-nav button:hover {
+            background: #e0e0e0;
+        }
+
+        .gallery-nav button.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .product-template {
+            position: relative;
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-template:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #0066cc;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Video Carousel Styles */
+        .video-carousel-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0 20px 0;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+        }
+        
+        .video-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: #000;
+        }
+        
+        .carousel-video {
+            width: 100%;
+            max-height: 500px;
+            display: block;
+            background: #000;
+        }
+        
+        .carousel-selectors {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .carousel-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ccc;
+            display: inline-block;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+        .carousel-dot.active {
+            background: #0066cc;
+            transform: scale(1.2);
+        }
+        
+        /* About section */
+        .about {
+            background: #fff;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Contact section */
+        .contact {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            color: white;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #222;
+            color: #ddd;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #0066cc;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0066cc;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #0066cc;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: white;
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .main-nav li {
+                width: 100%;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .main-nav a {
+                display: block;
+                padding: 18px 0;
+                font-size: 1.2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-nav {
+                justify-content: flex-start;
+            }
+            
+            .video-carousel {
+                max-width: 100%;
+            }
+            
+            .carousel-video {
+                max-height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-content {
+                padding: 30px 10px;
+            }
+            
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo-nav-container">
+            <div class="logo">Ghost<span>VB</span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Strona główna</a></li>
+                    <li><a href="#products">Produkty</a></li>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <span class="menu-icon">☰</span>
+                <span class="close-icon">✕</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="video-banner" id="home">
+        <video autoplay muted loop>
+            <source src="https://assets.codepen.io/3364143/smoke.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">Nowa generacja e-papierosów</h1>
+            <p class="hero-subtitle">Odkryj innowacyjne urządzenia i liquidy najwyższej jakości</p>
+            <a href="#products" class="btn">Odkryj produkty</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products section" id="products">
+        <div class="container">
+            <h2 class="section-title">Nasze Produkty</h2>
+            
+            <div class="gallery-nav">
+                <button class="active">Wszystkie</button>
+                <button>E-papierosy</button>
+                <button>Akcesoria</button>
+                <button>Liquidy</button>
+            </div>
+            
+            <div class="product-gallery">
+                <div class="product-template" style="background-image: url('https://images.unsplash.com/photo-1600956054489-a23507a64e4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ghost VB Mosmo Pro</h3>
+                        <p class="product-price">299 zł</p>
+                    </div>
+                </div>
+                
+                <div class="product-template" style="background-image: url('https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <div class="product-badge">Nowość</div>
+                    <div class="product-content">
+                        <h3 class="product-title">Liquid Arctic Mint</h3>
+                        <p class="product-price">49 zł</p>
+                    </div>
+                </div>
+                
+                <div class="product-template" style="background-image: url('https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <div class="product-content">
+                        <h3 class="product-title">Zestaw startowy</h3>
+                        <p class="product-price">199 zł</p>
+                    </div>
+                </div>
+                
+                <div class="product-template" style="background-image: url('https://images.unsplash.com/photo-1581691854205-bf14c7d4a7e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <div class="product-content">
+                        <h3 class="product-title">Zapasowe grzałki</h3>
+                        <p class="product-price">39 zł</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Carousel Section -->
+    <section class="video-carousel-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Innowacje Ghost VB</h2>
+            
+            <div class="video-carousel">
+                <video class="carousel-media carousel-video" autoplay muted loop>
+                    <source src="https://assets.codepen.io/3364143/smoke.mp4" type="video/mp4">
+                </video>
+                
+                <div class="carousel-selectors">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">O nas</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Tworzymy przyszłość vaping</h3>
+                    <p>Ghost VB to polski producent innowacyjnych e-papierosów i liquidów najwyższej jakości. Nasza firma powstała z pasji do tworzenia produktów, które łączą nowoczesny design z doskonałą funkcjonalnością.</p>
+                    <p>Wszystkie nasze produkty są tworzone z dbałością o każdy detal. Stawiamy na najwyższą jakość komponentów, bezpieczeństwo użytkowania oraz wyjątkowe doznania smakowe.</p>
+                    <p>Nasz zespół składa się z doświadczonych inżynierów, projektantów i specjalistów od liquidów, którzy codziennie pracują nad udoskonalaniem naszych produktów i tworzeniem nowych rozwiązań.</p>
+                    <a href="#contact" class="btn">Skontaktuj się</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Ghost VB Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Imię i nazwisko</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adres email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Wiadomość</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Wyślij wiadomość</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ghost VB</h3>
+                    <p>Polski producent innowacyjnych e-papierosów i liquidów najwyższej jakości.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Produkty</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">E-papierosy</a></li>
+                        <li><a href="#">Liquidy</a></li>
+                        <li><a href="#">Akcesoria</a></li>
+                        <li><a href="#">Zestawy startowe</a></li>
+                        <li><a href="#">Nowości</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Informacje</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Regulamin</a></li>
+                        <li><a href="#">Polityka prywatności</a></li>
+                        <li><a href="#">Dostawa i płatności</a></li>
+                        <li><a href="#">Reklamacje</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> ul. Technologiczna 15, Wrocław</li>
+                        <li><i class="fas fa-phone"></i> +48 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> kontakt@ghostvb.pl</li>
+                        <li><i class="fas fa-clock"></i> Pon-Pt: 9:00-17:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ghost VB. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM ready function
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Ghost VB Polish version - script loaded');
+            
+            // Mobile menu functionality
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const menuIcon = mobileToggle.querySelector('.menu-icon');
+            const closeIcon = mobileToggle.querySelector('.close-icon');
+            
+            if (mobileToggle && mainNav) {
+                // Initialize menu state
+                function updateMenuState() {
+                    if (window.innerWidth <= 768) {
+                        mobileToggle.style.display = 'block';
+                        if (mainNav.classList.contains('active')) {
+                            menuIcon.style.display = 'none';
+                            closeIcon.style.display = 'inline';
+                        } else {
+                            menuIcon.style.display = 'inline';
+                            closeIcon.style.display = 'none';
+                        }
+                    } else {
+                        mobileToggle.style.display = 'none';
+                        mainNav.style.display = 'flex';
+                    }
+                }
+                
+                // Toggle menu
+                mobileToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mainNav.classList.toggle('active');
+                    
+                    // Toggle icons
+                    if (menuIcon.style.display === 'none') {
+                        menuIcon.style.display = 'inline';
+                        closeIcon.style.display = 'none';
+                    } else {
+                        menuIcon.style.display = 'none';
+                        closeIcon.style.display = 'inline';
+                    }
+                    
+                    // Toggle menu visibility
+                    mainNav.style.display = mainNav.classList.contains('active') ? 'flex' : 'none';
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    updateMenuState();
+                    if (window.innerWidth > 768) {
+                        mainNav.classList.remove('active');
+                        menuIcon.style.display = 'inline';
+                        closeIcon.style.display = 'none';
+                    }
+                });
+                
+                // Initialize
+                updateMenuState();
+            }
+            
+            // Product filtering
+            const filterButtons = document.querySelectorAll('.gallery-nav button');
+            const productTemplates = document.querySelectorAll('.product-template');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filterValue = button.textContent.toLowerCase();
+                    
+                    // Filter products
+                    productTemplates.forEach(product => {
+                        const productTitle = product.querySelector('.product-title').textContent.toLowerCase();
+                        
+                        if (filterValue === 'wszystkie' || 
+                            (filterValue === 'e-papierosy' && productTitle.includes('mosmo')) ||
+                            (filterValue === 'akcesoria' && productTitle.includes('grzałki')) ||
+                            (filterValue === 'liquidy' && productTitle.includes('liquid'))) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            menuIcon.style.display = 'inline';
+                            closeIcon.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('.main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Video Carousel Functionality
+            const media = document.querySelectorAll('.video-carousel .carousel-media');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            let slideInterval;
+            
+            // Initialize carousel
+            function initCarousel() {
+                media.forEach((el, i) => {
+                    el.style.display = (i === 0) ? 'block' : 'none';
+                    el.classList.toggle('active', i === 0);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === 0);
+                    dot.setAttribute('data-index', i);
+                });
+            }
+            
+            // Show slide by index
+            function showSlide(index) {
+                if (index >= media.length) index = 0;
+                if (index < 0) index = media.length - 1;
+                
+                media.forEach((el, i) => {
+                    el.style.display = (i === index) ? 'block' : 'none';
+                    el.classList.toggle('active', i === index);
+                });
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                currentIndex = index;
+            }
+            
+            // Auto-rotate slides
+            function startSlideInterval() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, 5000);
+            }
+            
+            // Dot click handlers
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideInterval);
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    showSlide(idx);
+                    startSlideInterval();
+                });
+            });
+            
+            // Initialize on load
+            initCarousel();
+            startSlideInterval();
+        });
+    </script>
+</body>
+</html>
